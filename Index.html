@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Dice</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+
+
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+</head>
+
+<body   >
+     
+
+    <div class="login_popup" id="popup_form">
+        <div class="boxLogin">
+            <form id="form" class="formc" method="post" action="">
+                <div class="close" id="close_btn">&times;</div>
+
+                <div class="login_content">
+                    <p>
+                        The primary purpose of this game is to provide a dynamic and engaging depiction of a student's
+                        professional journey, focusing on the <b> obstacles, key milestones,</b> and <b>decisions</b>
+                        that shape their
+                        success in the IT industry. By adopting the <b>Snake and Ladder</b> concept, it effectively
+                        illustrates how
+                        mastering <b>fundamental skills</b> , overcoming challenges like <b>phony courses</b> , and
+                        pursuing <b>professional
+                            growth</b> can ultimately lead to the coveted goal of securing a position in a <b>
+                            prestigious multinational
+                            corporation (MNC).</b> <br><br>
+                        This game serves as a <b>motivational</b> tool, encouraging students to make <b>informed
+                            decisions </b> while
+                        avoiding common pitfalls. It emphasizes the importance of <b>resilience, mentorship </b>, and
+                        <b>continuous
+                            learning </b> in navigating challenges. By highlighting the value of <b>workshops,
+                            internships, skill
+                            development,</b> and <b>bootcamp programs</b>, it provides a structured pathway to success.
+                        Combining
+                        <b> education, engagement,</b> and <b>career-focused insights,</b> the game aims to inspire
+                        students to confidently
+                        envision and achieve their professional aspirations.
+                    </p>
+                </div>
+                <h1>May I Know About You!</h1>
+                <div class="inputfeilds">
+                    <div class="inputfeildsOne">
+                        <div class="form_group">
+                            <input type="text" placeholder="Enter your name" name="Name" id="Name" class="popup_input">
+                        </div>
+                        <div class="form_group">
+                            <input type="text" placeholder="Enter your email" name="Email" class="popup_input">
+                        </div>
+                    </div>
+                    <div class="form_group">
+                        <input type="number" placeholder="Enter your phone number" name="Phone" class="popup_input">
+                    </div>
+                </div>
+                <div>
+                    <button class="btn" type="submit" value="Submit">Submit</button>
+                    <button class="btn" type="button" id="cancel"value="Cancel"> Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="popup">
+        <h2>You have Subscribed</h2>
+        <br><br>
+        <p>your choice</p>
+        <button id="closebtn">Close</button>
+    </div>
+<!-- Congratulationspopup -->
+<canvas id="confettiCanvas"></canvas>
+
+<!-- Congratulations Popup -->
+<div class="popupwin" id="congratulationsPopup">
+    <h2>Congratulations!</h2>
+    <p>You Win!</p>
+    <a href="https://aitrichacademy.com/">For More Details</a>
+    <br />
+    <button id="closebtnwin">Close</button>
+</div>
+
+
+
+    <div class="rightQube">
+        <div class="scene">
+            <div class="cube">
+                <div class="cube__face cube__face--1">
+                    <div class="dot"></div>
+                </div>
+
+                <div class="cube__face cube__face--2">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="cube__face cube__face--3">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="cube__face cube__face--4">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="cube__face cube__face--5">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="cube__face cube__face--6">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+            <div class="shadow"></div>
+        </div>
+        <p id="rolledNumber" style="font-size: 1em; text-align: center; margin-top: 1em; color: white;">
+            Rolled Number:
+        </p>
+        <p class="idnumber"></p>
+        <audio id="RolllSound" src="Assets/rollSound.mp3"></audio>
+    </div>
+
+    <div class="cont">
+
+
+
+        <audio id="popupSound" src="Assets/sound.mp3"></audio>
+        <div class="box" id="b100">
+            <p class="showbtn hidden">Securing a Job in an MNC Company</p>
+            <p class="showbtn2 hidden">Joining a multinational firm is the ultimate accomplishment, symbolized by the
+                ultimate square. This accomplishment is the highest level of recognition for your abilities and
+                knowledge, achieving a lifelong dream and laying the groundwork for a career that will have a
+                significant impact on the world.
+
+
+            </p>
+
+        </div>
+
+        <div class="box" id="b99">
+            <p class="showbtn hidden">
+                Left Your Career 1
+            </p>
+            <p class="showbtn2 hidden">It can feel like a tremendous loss to experience a major setback, like quitting
+                your job. But with introspection and a fresh sense of purpose, recovery is always achievable, and
+                refocusing can help you get back on track.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b98">
+            <p class="showbtn hidden">Mentoring Future Leaders</p>
+            <p class="showbtn2 hidden">You impart your knowledge and insights to the next generation as a mentor. This
+                duty ensures that your legacy endures via the accomplishments of others and molds the leaders of
+                tomorrow.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b97">
+            <p class="showbtn hidden">Achieving Financial Freedom</p>
+            <p class="showbtn2 hidden">The prize for years of diligence and wise choices is financial independence. It
+                allows you to enjoy the results of your labor without worrying about money, concentrate on initiatives
+                that you are passionate about, and contribute back to the community.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b96">
+            <p class="showbtn hidden">Becoming a Global Tech Leader</p>
+
+            <p class="showbtn2 hidden">Reaching the position of global tech leader represents unmatched knowledge,
+                foresight, and power in the technology sector. You solidify your position among the top by fostering
+                innovation, establishing trends, and motivating innumerable professionals.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b95">
+            <p class="showbtn hidden">Global Recognition</p>
+            <p class="showbtn2 hidden">Reaching international recognition signifies that peers and organizations around
+                the world have taken note of your work. Honors, commendations, and invites to exclusive groups highlight
+                your reputation as a leader whose efforts cut beyond national borders.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b94">
+            <p class="showbtn hidden">Unexpected Challenge</p>
+            <p class="showbtn2 hidden">Unexpected difficulties can occur even at the height of achievement. To overcome
+                these last obstacles, one needs to be resilient, flexible, and determined. Your commitment is
+                strengthened and your preparation for higher accomplishments is reaffirmed as you successfully navigate
+                these challenges.
+
+
+            </p>
+
+        </div>
+
+        <div class="box" id="b93">
+            <p class="showbtn hidden">Building a Legacy</p>
+            <p class="showbtn2 hidden">Leaving a lasting impression via your efforts, creativity, and mentoring is what
+                it means to build a legacy. It's about ensuring that your contributions influence the future by leaving
+                behind values, frameworks, or concepts that motivate and direct others.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b92">
+            <p class="showbtn hidden">Expanding Global Influence</p>
+            <p class="showbtn2 hidden">Your leadership and vision are demonstrated by your ability to increase your
+                impact globally. You may create a bigger effect and distinguish yourself as a global changemaker by
+                working together across borders, sharing your knowledge with a variety of audiences, and participating
+                in international projects.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b91">
+            <p class="showbtn hidden">Securing Major Contracts</p>
+            <p class="showbtn2 hidden">Getting big contracts is the result of years of experience, skill in
+                negotiations, and credibility in the workplace. It not only yields monetary gains but also establishes
+                you as a major force in the field, creating avenues for much greater prospects.
+
+            </p>
+            <p class="showbtn2 hidden">
+
+            </p>
+        </div>
+
+        <div class="box" id="b81">
+            <p class="showbtn hidden">Writing a Technical Book</p>
+            <p class="showbtn2 hidden">Writing a technical book shows that you are an expert in your subject. It enables
+                you to impact the upcoming generation of professionals, build thought leadership, and impart your
+                knowledge. This achievement validates your knowledge and has a long-lasting impact on the technology
+                community.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b82">
+            <p class="showbtn hidden">Investing in Startups</p>
+            <p class="showbtn2 hidden">Putting money into startups shows that you are dedicated to encouraging
+                creativity and helping up-and-coming talent. By participating in entrepreneurial endeavors, you can play
+                a crucial part in developing ground-breaking concepts and broadening your professional horizons.
+
+            </p>
+        </div>
+
+        <div class="box" id="b83">
+            <p class="showbtn hidden">Major Setback</p>
+            <p class="showbtn2 hidden">Resilience and adaptation are put to the test after suffering a significant
+                setback. Overcoming such obstacles by learning and planning helps you grow personally and improves your
+                capacity to deal with uncertainty, which opens the door to more success in the future.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b84">
+            <p class="showbtn hidden">Speaking at Global Conferences</p>
+            <p class="showbtn2 hidden">Attending international conferences establishes you as an authority and thought
+                leader in your profession. It offers a forum for exchanging ideas, motivating others, and creating a
+                global network of colleagues and supporters, so expanding your impact across borders.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b85">
+            <p class="showbtn hidden">Major Innovation</p>
+            <p class="showbtn2 hidden">Leading a significant innovation demonstrates your capacity for original thought
+                and problem-solving, marking a revolutionary milestone. Redefining industries through innovation
+                positions you as a technological trailblazer and earns you recognition.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b86">
+            <p class="showbtn hidden">Ladder: Starting a Consultancy</p>
+            <p class="showbtn2 hidden">You can influence solutions across sectors by starting a consultancy based on
+                your area of expertise. Gaining recognition for ground-breaking innovation boosts your reputation, draws
+                in top customers, and guarantees your continued influence in the tech industry.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b87">
+            <p class="showbtn hidden">Mentoring the Next Generation</p>
+            <p class="showbtn2 hidden">Being a mentor to upcoming leaders is a rewarding experience that supports the
+                industry's continued innovation and greatness. Leading others guarantees that your expertise influences
+                the careers of future professionals and helps you establish your legacy as a role model.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b88">
+            <p class="showbtn hidden">
+                Becoming a Board Member</p>
+            <p class="showbtn2 hidden">Joining a board gives you more control over strategic choices, enabling you to
+                mold company objectives and impact market trends. It is evidence of your extensive experience and
+                reliable knowledge.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b89">
+            <p class="showbtn hidden">Market Fluctuations</p>
+            <p class="showbtn2 hidden">Handling market swings shows that you are a resilient leader in times of economic
+                hardship. You can guarantee stability and progress by remaining proactive and flexible, establishing
+                yourself as a trustworthy leader during ambiguous times.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b90">
+            <p class="showbtn hidden">Leading Industry Initiatives</p>
+            <p class="showbtn2 hidden">Leading industry-wide projects demonstrates your leadership and forward-thinking
+                outlook. These projects establish your legacy in the tech industry and position you as a changemaker,
+                whether they are tackling global issues or developing technology.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b80">
+            <p class="showbtn hidden">Becoming a Tech Influencer</p>
+            <p class="showbtn2 hidden">Using your knowledge to motivate, inform, and facilitate discussions about new
+                developments in technology is what it means to be a tech influencer. Your position as a visionary is
+                cemented in this post, which also shapes the next generation of leaders and propels industry evolution.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b79">
+            <p class="showbtn hidden">Economic Downturn</p>
+            <p class="showbtn2 hidden">
+                Economic downturns present several difficulties that call for adaptability and resilience. Continued
+                progress in spite of outside setbacks is ensured by navigating such times with creative solutions,
+                economical tactics, and a forward-looking outlook.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b78">
+            <p class="showbtn hidden">Gaining Global Recognition</p>
+            <p class="showbtn2 hidden">Gaining international recognition increases your impact as a tech community
+                thought leader. It provides access to leadership positions, speaking engagements, and collaborations
+                that increase your influence internationally.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b77">
+            <p class="showbtn hidden">Publishing Technical Papers</p>
+            <p class="showbtn2 hidden">Publishing technical papers shows that you are an expert in solving complicated
+                industrial problems and that you are a thought leader. It increases your credibility, encourages
+                partnerships, and adds to the corpus of information influencing the direction of the sector.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b76">
+            <p class="showbtn hidden">Mentoring Startups</p>
+            <p class="showbtn2 hidden">You can impart your expertise and experience to aspiring business owners by
+                mentoring startups. In addition to encouraging creativity, this partnership keeps you abreast of new
+                developments in the industry and helps you establish enduring business partnerships.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b75">
+            <p class="showbtn hidden">Industry Awards</p>
+            <p class="showbtn2 hidden">Being recognized with industry awards recognizes your outstanding achievements to
+                the profession. These honors boost your reputation in the workplace and garner respect and trust from
+                both clients and colleagues, opening doors for future leadership roles.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b74">
+            <p class="showbtn hidden">Becoming a Senior Architect</p>
+            <p class="showbtn2 hidden">As you advance to a senior architect position, you will be positioned as a
+                strategic thinker in charge of creating reliable systems and directing the completion of projects. This
+                position solidifies your position as an industry expert by requiring in-depth technical knowledge and a
+                thorough comprehension of business objectives.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b73">
+            <p class="showbtn hidden">Burnout</p>
+            <p class="showbtn2 hidden">Burnout is a prevalent issue in high-stakes positions, frequently brought on by
+                extended stress and overcommitment. Maintaining long-term professional success requires identifying its
+                symptoms and taking appropriate action through delegation, time management, and self-care.
+
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b72">
+            <p class="showbtn hidden">Building a High- Performance Team</p>
+            <p class="showbtn2 hidden">Developing a culture of cooperation, creativity, and excellence is essential to
+                leading a high-performing team. This position develops your leadership abilities and gives you the
+                freedom to accomplish challenging objectives while fostering the development and potential of team
+                members.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b71">
+            <p class="showbtn hidden">Joining a Prestigious Tech Company</p>
+            <p class="showbtn2 hidden">
+                Being hired by a prominent tech business marks a turning point in your career and shows that your hard
+                work and experience are valued. It offers chances to collaborate with elite people, work on innovative
+                projects, and access a multitude of resources for continued professional growth.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b61">
+            <p class="showbtn hidden">Becoming a Project Manager</p>
+            <p class="showbtn2 hidden">Taking on the role of project management is a major professional change. Project
+                management from inception to completion, effective team coordination, and budget, schedule, and resource
+                management are all necessary for this position. It prepares you for more senior leadership positions by
+                honing your organizational abilities and enhancing your capacity to handle challenging situations.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b62">
+            <p class="showbtn hidden">Learning Business Acumen</p>
+            <p class="showbtn2 hidden">Strategic decision-making and technical expertise are connected by business
+                acumen. Gaining knowledge of consumer demands, financial concepts, and market trends enables you to
+                match technological solutions with corporate objectives, which makes you an invaluable asset in
+                promoting organizational expansion.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b63">
+            <p class="showbtn hidden">Poor Decision Making</p>
+            <p class="showbtn2 hidden">Inadequate choices may result in missed opportunities, mismanaged resources, or
+                project delays. Gaining knowledge from these experiences improves risk management and critical thinking
+                skills, empowering you to make wise decisions that promote long-term success.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b64">
+            <p class="showbtn hidden">Overseeing Product Development</p>
+            <p class="showbtn2 hidden">Managing a product's lifespan, from conception to launch, is part of overseeing
+                product development. It calls for cross-team cooperation, strategic prioritization, and a thorough
+                comprehension of user requirements. You will be able to contribute significantly to the development of
+                creative solutions that satisfy consumer needs in this role.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b65">
+            <p class="showbtn hidden">Product Success</p>
+            <p class="showbtn2 hidden">Successful product delivery is a result of strategic planning, teamwork, and
+                strong leadership. It enhances your reputation in the workplace and provides access to more
+                responsibility, such as positions that influence corporate strategy.
+
+
+            </p>
+            <p class="showbtn2 hidden">
+
+            </p>
+        </div>
+
+        <div class="box" id="b66">
+            <p class="showbtn hidden">Specializing in AI/ML</p>
+            <p class="showbtn2 hidden">You can take on cutting-edge problems in data-driven companies by specializing in
+                artificial intelligence and machine learning. With these abilities, you establish yourself as a
+                progressive technologist who can develop solutions that have an impact and are prepared for the future.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b67">
+            <p class="showbtn hidden">Contributing to Research</p>
+            <p class="showbtn2 hidden">Research encourages creativity and thinking leadership. Research demonstrates
+                your capacity to influence the development of the field, whether you are publishing papers, working with
+                others on industrial breakthroughs, or creating ground-breaking technology.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b68">
+            <p class="showbtn hidden">Becoming a Tech Thought Leader</p>
+            <p class="showbtn2 hidden">Sharing knowledge via writing, public speaking, and mentoring is a key component
+                of being a thought leader. It builds your reputation and power, allowing you to motivate others and
+                affect the course of technological development.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b69">
+            <p class="showbtn hidden">Market Misalignment </p>
+            <p class="showbtn2 hidden">Misalignments with consumer needs can impede the development of a product or the
+                expansion of a firm. To remain competitive and relevant in a changing sector, it is imperative to
+                analyze trends, adjust to feedback, and change tactics.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b70">
+            <p class="showbtn hidden">Gaining Industry Recognition</p>
+            <p class="showbtn2 hidden">Receiving praise from colleagues, associations, or trade shows validates your
+                work and knowledge. It enhances your reputation as a reputable professional and creates chances for
+                partnerships, leadership positions, and career progression.
+
+
+            </p>
+            <p class="showbtn2 hidden">
+
+            </p>
+        </div>
+
+        <div class="box" id="b60">
+            <p class="showbtn hidden">Achieving Team Success</p>
+            <p class="showbtn2 hidden">The result of good leadership, teamwork, and strategic planning is to celebrate
+                team accomplishments. It displays your capacity to promote harmony and accomplish common objectives.
+                Reliable team performance boosts your reputation and solidifies your path to more senior leadership
+                positions.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b59">
+            <p class="showbtn hidden">Starting a Major Tech Initiative</p>
+            <p class="showbtn2 hidden">Starting a large-scale technology project shows creativity and self-reliance.
+                Such endeavors demonstrate your entrepreneurial mindset and desire to make an effect in the market,
+                whether you're launching a new product or resolving a challenging issue.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b58">
+            <p class="showbtn hidden">Mastering DevOps Practices</p>
+            <p class="showbtn2 hidden">To ensure quicker and more dependable software delivery, DevOps places a strong
+                emphasis on cooperation between the development and operations teams. You may improve the development
+                process overall, automate jobs, and optimize workflows by becoming proficient with DevOps tools like
+                Jenkins, Kubernetes, and Docker.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b57">
+            <p class="showbtn hidden">Learning Advanced Cloud Deployment</p>
+            <p class="showbtn2 hidden">Optimizing apps for cloud environments' scalability, security, and performance is
+                known as advanced cloud deployment. Proficiency in cloud-native programming, serverless architecture,
+                and containerization enables you to provide dependable and effective solutions in today's technological
+                environments.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b56">
+            <p class="showbtn hidden">Leading a Development Team</p>
+            <p class="showbtn2 hidden">It need both technical know-how and people abilities to lead a development team.
+                You will oversee project schedules, settle disputes, and make sure team members are inspired and
+                effective. Your capacity to manage more responsibility is demonstrated by your success in this position.
+
+            </p>
+        </div>
+
+        <div class="box" id="b55">
+            <p class="showbtn hidden">Leadership Skills</p>
+            <p class="showbtn2 hidden">To lead teams to success, one needs strong leadership abilities. Effective
+                leaders maintain accountability while motivating, assigning, and encouraging teamwork. Gaining these
+                abilities prepares you for positions that have an impact on corporate strategy and produce significant
+                outcomes.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b54">
+            <p class="showbtn hidden">Misaligned Career Goal </p>
+            <p class="showbtn2 hidden">Frustration and stagnation can result from misaligned goals. It's critical to
+                periodically assess your career goals and make sure they match your interests and skill set. Finding a
+                mentor or expert advice might help you get back on track and make a clear plan for the future.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b53">
+            <p class="showbtn hidden">Speaking at confidence</p>
+            <p class="showbtn2 hidden">Your reputation as an authority is cemented when you speak at industry
+                conferences. It enables you to keep current with trends, network with others, and exchange creative
+                ideas. Speaking in front of an audience also increases your self-confidence and establishes you as an
+                authority in your industry.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b52">
+            <p class="showbtn hidden">Building a Personal Brand</p>
+            <p class="showbtn2 hidden">Developing a personal brand helps you stand out in the field. You can demonstrate
+                your knowledge and thought leadership by blogging, making contributions to open source, or posting
+                insights on websites like LinkedIn. You can increase your visibility and access new professional
+                prospects with a strong personal brand.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b51">
+            <p class="showbtn hidden">Mentoring Junior Developers</p>
+            <p class="showbtn2 hidden">A fulfilling way to impart your skills and experience is to mentor younger
+                engineers. It creates a positive work atmosphere and improves your communication and leadership
+                abilities. You may improve team relations and create a culture of ongoing learning and development by
+                mentoring others.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b41">
+            <p class="showbtn hidden">Learning UI/UX Design</p>
+            <p class="showbtn2 hidden">The goal of UI/UX design is to improve user experiences by developing
+                aesthetically pleasing and intuitive interfaces. Developers may create fluid interactions by using tools
+                like Figma or Adobe XD, applying design principles, and comprehending user behavior. A strong grasp of
+                UI/UX design guarantees that your goods will appeal to consumers and stand out in a crowded market.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b42">
+            <p class="showbtn hidden"> Gaining Experience in System Design
+            </p>
+            <p class="showbtn2 hidden">System design is the process of creating software systems that are reliable and
+                scalable. It necessitates requirements analysis, technology stack selection, and solution design that
+                effectively manages heavy loads. System design expertise shows that you can think strategically and
+                create solutions that meet technical and business objectives.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b43">
+            <p class="showbtn hidden">
+                Project Failure
+            </p>
+            <p class="showbtn2 hidden">Although it can be difficult, facing a failed project is frequently an essential
+                learning opportunity. It teaches you the value of effective communication, careful planning, and risk
+                management. Future projects will be carried out with more accuracy and resilience if you reflect on your
+                mistakes and modify your strategy.
+
+
+            </p>
+        </div>
+        <div class="box" id="b44">
+            <p class="showbtn hidden">Mastering Agile Methodologies</p>
+            <p class="showbtn2 hidden">Iterative development, teamwork, and flexibility are the main focuses of agile
+                approaches like Scrum and Kanban. Gaining proficiency in Agile enables you to respond to evolving needs
+                while producing high-quality solutions quickly. It guarantees ongoing software development lifecycle
+                improvement and promotes teamwork.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b45">
+            <p class="showbtn hidden">Successful Project Delivery</p>
+            <p class="showbtn2 hidden">Technical proficiency, good project management, and teamwork are all necessary to
+                complete a project successfully. It boosts confidence in your skills, improves relationships with
+                stakeholders, and enhances your professional reputation. Successful delivery history frequently results
+                in accolades and improved employment prospects.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b46">
+            <p class="showbtn hidden">Learning Cloud Technologies</p>
+            <p class="showbtn2 hidden">Cloud computing's cost-effectiveness, scalability, and flexibility are
+                revolutionizing software development. You can deploy, monitor, and manage cloud applications with the
+                help of learning platforms like AWS, Azure, or Google Cloud. For contemporary developers hoping to
+                remain relevant and take the lead in the tech industry, cloud proficiency is essential.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b47">
+            <p class="showbtn hidden">Contributing to Open Source</p>
+            <p class="showbtn2 hidden">Contributions to open-source projects allow you to learn from others and
+                demonstrate your abilities to the world's developer community. It assists you in developing a portfolio,
+                improving your coding skills, and making contacts with professionals in the field. Participating in
+                worthwhile projects enhances your job profile considerably as well.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b48">
+            <p class="showbtn hidden">Specializing in a Tech Stack</p>
+            <p class="showbtn2 hidden">By focusing on a particular technological stack, like MERN or MEAN, ASP.Net Core
+                Full Stack you might become an authority in a particular field of development. This knowledge makes you
+                a go-to expert in your chosen field and allows you to provide excellent answers quickly. More job
+                stability and advancement are frequently the results of specialization.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b49">
+            <p class="showbtn hidden">Skill Stagnation</p>
+            <p class="showbtn2 hidden">
+                When you cease improving your skills, you risk becoming obsolete in a field that is changing quickly.
+                This is known as stagnation. Stasis can be avoided with frequent learning, going to workshops, and
+                investigating new technology. Maintaining a proactive approach to skill improvement guarantees your
+                career's long-term success and flexibility.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b50">
+            <p class="showbtn hidden">Promotion to Senior Developer</p>
+            <p class="showbtn2 hidden">The Senior Developer title is the result of years of dedication, knowledge, and
+                leadership. This position frequently entails project management, coaching juniors, and influencing
+                technical choices. A major accomplishment that establishes you as a vital member of your team and
+                company is being promoted to senior developer.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b40">
+            <p class="showbtn hidden">Becoming a Full Stock Developer</p>
+            <p class="showbtn2 hidden">Being a full-stack developer shows that you are adaptable and have thorough
+                understanding of both frontend and backend technologies. You can work on every step of the development
+                process in this capacity, from managing servers and databases to developing user interfaces. Full-stack
+                development increases your employability and provides access to higher-level positions and leadership
+                opportunities.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b39">
+            <p class="showbtn hidden">Burnout</p>
+            <p class="showbtn2 hidden">Burnout happens when long-term stress wears one out mentally and physically. It
+                can lower enthusiasm for work, creativity, and productivity. It's critical to identify early warning
+                indicators and take appropriate action to address them through stress management, delegating, and
+                work-life balance. Regaining focus and adopting a sustainable attitude to your work are fostered by
+                overcoming burnout.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b38">
+            <p class="showbtn hidden">Learning Backend Technologies</p>
+            <p class="showbtn2 hidden">Understanding databases, server-side programming, and APIs are all part of
+                backend development. You can manage servers, process data, and authenticate users if you know how to use
+                backend technologies. Backend knowledge is essential to full-stack development since it guarantees the
+                stability, scalability, and security of applications.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b37">
+            <p class="showbtn hidden">Learning Frontend Technologies</p>
+            <p class="showbtn2 hidden">You may design user-friendly interfaces by becoming proficient with frontend
+                technologies like HTML, CSS, JavaScript, and frameworks like React or Angular. These abilities guarantee
+                that programs are both aesthetically pleasing and useful, which raises user happiness. Proficiency in
+                frontend development is essential for creating fluid and engaging user interfaces.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b36">
+            <p class="showbtn hidden">Transitioning to Mid-Level Developer</p>
+            <p class="showbtn2 hidden">As a developer advances from junior to mid-level, they must assume greater
+                responsibilities and tackle increasingly challenging issues. This change demonstrates your capacity for
+                self-directed work, mentoring, and smart decision-making. During this stage, you are trusted with
+                important project roles and your skill is acknowledged.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b35">
+            <p class="showbtn hidden">Certification</p>
+            <p class="showbtn2 hidden">Getting certified signifies that you are prepared to take on more challenging
+                jobs and is more than just a credential. It increases your confidence, broadens your knowledge, and
+                introduces you to a network of qualified specialists. Obtaining a certification can help you advance in
+                your profession and gain respect in your field.
+
+            </p>
+        </div>
+
+        <div class="box" id="b34">
+            <p class="showbtn hidden">Getting Certified in Software Engineering</p>
+            <p class="showbtn2 hidden">Obtaining a software engineering certification attests to your mastery of
+                important ideas and procedures. It increases your credibility in the job market and shows that you are
+                dedicated to your professional growth. Gaining certifications keeps you competitive in a field that is
+                always changing, opens doors to new prospects, and fosters trust with employers.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b33">
+            <p class="showbtn hidden">Overconfidence</p>
+            <p class="showbtn2 hidden">Although confidence is necessary, having too much of it can result in mistakes,
+                lost opportunities for learning, and strained relationships. It frequently leads to overpromising
+                achievements and underestimating difficulties. To deal with overconfidence, one must be humble, learn
+                new things constantly, and ask for feedback. Understanding the risks guarantees balanced decision-making
+                and long-term professional development.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b32">
+            <p class="showbtn hidden">Receiving Positive Feedback</p>
+            <p class="showbtn2 hidden">Positive reinforcement is a recognition of your efforts and contributions. It
+                enhances your reputation with peers and superiors, confirms your abilities, and inspires you to keep
+                getting better. Additionally, constructive criticism aids in pinpointing areas for improvement, enabling
+                you to hone your skills and accomplish more ambitious career objectives.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b31">
+            <p class="showbtn hidden">Completing First Major Project</p>
+            <p class="showbtn2 hidden">
+
+            </p>
+        </div>
+
+        <div class="box" id="b21">
+            <p class="showbtn hidden">Completing Probation Period</p>
+            <p class="showbtn2 hidden">
+                Reaching the end of your probationary period is a big professional accomplishment. It displays your
+                capacity to adjust to the demands of the business, fulfill commitments, and produce outcomes. This stage
+                assesses your commitment, work ethic, and speed of learning. Successfully passing probation not only
+                guarantees your position but also builds your confidence and symbolizes the beginning of your long-term
+                contributions to the organization.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b22">
+            <p class="showbtn hidden">Advanced Coding Skills</p>
+            <p class="showbtn2 hidden">Gaining proficiency in advanced coding enables you to take on challenging issues
+                and produce effective, scalable solutions. Gaining expertise in a variety of programming languages,
+                algorithms, and system architecture is crucial for professional advancement. Having advanced skills
+                enables you to contribute to high-impact projects, innovate, and optimize procedures. Participating in
+                coding challenges, learning from peers, and consistent practice are all efficient methods to improve
+                these abilities.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b23">
+            <p class="showbtn hidden">Learning Version Control (Git)</p>
+            <p class="showbtn2 hidden">Gaining proficiency with version control systems, such as Git, is essential for
+                productive software development teamwork. Git makes it possible to communicate with teams, keep track of
+                changes, and preserve the quality of your code. You can guarantee the smooth integration of code
+                contributions by being knowledgeable about branching, merging, and conflict resolution. Being proficient
+                in Git helps you manage error-free, well-organized codebases and increases team productivity.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b24">
+            <p class="showbtn hidden">Miscommunication</p>
+            <p class="showbtn2 hidden">
+                Misunderstandings, project delays, and strained team dynamics can result from poor communication.
+                Progress might be halted by poorly communicated concepts or confusing instructions. Focus on continuous
+                documentation, clear articulation, and active listening to overcome this obstacle. Cooperation is
+                encouraged, mistakes are reduced, and everyone is on the same page regarding the project's objectives
+                when there is effective communication. By quickly resolving misunderstandings, minor problems can avoid
+                becoming significant setbacks.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b25">
+            <p class="showbtn hidden">Starting Side Projects</p>
+            <p class="showbtn2 hidden">A proactive approach to investigating new technologies, coming up with innovative
+                solutions, and developing a solid portfolio is to start side projects. Without the pressure of meeting
+                deadlines at work, these initiatives offer a secure environment for experimentation, learning, and
+                innovation. Side projects help you stand out in the competitive job market by showcasing initiative,
+                passion, and self-motivation to prospective employers.
+
+            </p>
+        </div>
+
+        <div class="box" id="b26">
+            <p class="showbtn hidden">Mentorship</p>
+            <p class="showbtn2 hidden">For professional development, having a mentor is essential. Mentors help you
+                overcome obstacles more skillfully by offering advice, sharing experiences, and giving helpful
+                criticism. They assist you in recognizing your advantages, resolving your shortcomings, and establishing
+                realistic objectives. A competent mentor helps you make wise decisions and take advantage of
+                possibilities by quickening your learning curve and boosting your confidence.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b27">
+            <p class="showbtn hidden">Mastering Software Engineering Fundamentals</p>
+            <p class="showbtn2 hidden">A solid basis for a prosperous career is laid by having a solid understanding of
+                software engineering fundamentals. This covers subjects including system architecture, algorithms, data
+                structures, and optimal coding techniques. You can create reliable, maintainable, and effective systems
+                by mastering these principles. It equips you to address challenges in the real world methodically and
+                analytically.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b28">
+            <p class="showbtn hidden">Understanding SDLC</p>
+            <p class="showbtn2 hidden">One essential structure for organizing, creating, testing, and managing software
+                is the Software Development Life Cycle (SDLC). Knowing the steps of the SDLC guarantees that you
+                comprehend the methodical process of producing high-quality software on schedule. Understanding the SDLC
+                makes it easier to foresee problems, effectively manage resources, and guarantee compliance with project
+                specifications.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b29">
+            <p class="showbtn hidden">Exploring Agile Methodologies</p>
+            <p class="showbtn2 hidden">Agile approaches that emphasize adaptability, teamwork, and iterative development
+                include Scrum, Kanban, and Scrumban. Gaining knowledge about Agile enables you to produce value
+                gradually and adjust to shifting requirements. It guarantees that projects are finished successfully and
+                efficiently and improves teamwork. Agile methodology expertise is a highly sought-after ability in the
+                fast-paced world of software development today.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b30">
+            <p class="showbtn hidden">Attending Industry Conferences</p>
+            <p class="showbtn2 hidden">Attending industry conferences gives you access to cutting-edge trends,
+                cutting-edge technologies, and knowledgeable perspectives. These gatherings give you the chance to
+                demonstrate your expertise, network with industry experts, and get knowledge from influential people.
+                Attending conferences helps you stay ahead of the curve in your work by inspiring new ideas and keeping
+                you informed about industry norms.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b20">
+            <p class="showbtn hidden">Introduction to Agile</p>
+            <p class="showbtn2 hidden">Acquiring knowledge about Agile approaches is revolutionary for tech
+                professionals. Agile is a crucial foundation for contemporary project management because it encourages
+                cooperation, flexibility, and continual development. Gaining an understanding of Agile concepts enables
+                you to respond quickly to changes, create value gradually, and participate in team initiatives
+                successfully. Gaining proficiency in Agile not only increases your productivity but also positions you
+                as a valued asset in fast-paced work settings.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b19">
+            <p class="showbtn hidden">Onboarding Process</p>
+            <p class="showbtn2 hidden">New hires are introduced to the company's operations, tools, and culture
+                throughout the onboarding process. You will feel supported and welcomed in your new role if your
+                onboarding process goes smoothly. It offers a chance to build relationships with coworkers, comprehend
+                expectations, and coordinate with team objectives. A successful onboarding process helps you fit in at
+                work and creates the foundation for productivity and job happiness.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b18">
+            <p class="showbtn hidden">Starting as a Junior Developer</p>
+            <p class="showbtn2 hidden">It's a wonderful milestone to start your career as a junior developer. Learning
+                the ropes, comprehending workplace dynamics, and participating in tasks under supervision are all part
+                of this phase. It's an opportunity to learn new things, hone existing abilities, and lay a solid basis
+                for future development. Junior positions are essential for acquiring practical experience and honing
+                problem-solving skills. Achieving success in this phase sets the stage for future career advancement.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b17">
+            <p class="showbtn hidden">Joining Our Bootcamp</p>
+            <p class="showbtn2 hidden">For individuals who are having difficulty establishing themselves in the market,
+                our bootcamp offers a game-changing alternative. The bootcamp gives students the technical and soft
+                skills that companies are looking for, with an emphasis on hands-on, industry-aligned training. It
+                ensures job preparedness by bridging the gap between academic knowledge and practical applications. The
+                curriculum offers a clear path to career progression in addition to boosting confidence. Graduates are
+                frequently well-equipped to take on challenging jobs and land fulfilling positions.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b16">
+            <p class="showbtn hidden">Struggling to Find a Job</p>
+            <p class="showbtn2 hidden">A protracted job search can be extremely frustrating, particularly following
+                setbacks like a bad course selection or a failed interview. It frequently results in financial
+                difficulty and self-doubt. Nonetheless, problems may be improved with perseverance and calculated
+                actions. Your employability can be increased by improving your résumé, actively networking, and gaining
+                in-demand skills from reputable sources. This stage teaches perseverance and the value of lifelong
+                learning in overcoming obstacles in the workplace.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b15">
+            <p class="showbtn hidden">Taking a Wrong Course</p>
+            <p class="showbtn2 hidden">Choosing a course without doing adequate research or falling for a scam might
+                result in a waste of time and money with little to no benefit. The skills and information needed by the
+                industry are frequently not provided by phony or badly designed courses, leaving students unprepared for
+                job placements. This circumstance might be discouraging and impede professional advancement. The lesson
+                here is to prevent similar traps by carefully assessing courses, reading reviews, and confirming the
+                qualifications of training providers.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b14">
+            <p class="showbtn hidden">Poor Interview Performance</p>
+            <p class="showbtn2 hidden">Although a bad interview can be discouraging, it can also teach you a lot.
+                Inadequate preparation, anxiety, or a lack of clarity in the expression of ideas can all contribute to
+                poor performance. But every unsuccessful interview is a chance to think, get better, and develop. Better
+                results in subsequent interviews are ensured by asking for comments and fixing any shortcomings. Being
+                resilient is essential; failures should be viewed as opportunities for growth.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b13">
+            <p class="showbtn hidden">Job Interviews</p>
+            <p class="showbtn2 hidden">Interviews for jobs are important professional milestones. They provide you a
+                chance to show prospective employers your abilities, background, and character. Being well-prepared is
+                essential; you may greatly increase your chances of success by learning about the business, practicing
+                frequently asked questions, and improving your communication abilities. Additionally, interviews give
+                you a better understanding of what companies want from you and point out areas for improvement. A great
+                interview performance can pave the way for a rewarding career and open doors to interesting
+                opportunities.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b12">
+            <p class="showbtn hidden">Applying for Jobs</p>
+            <p class="showbtn2 hidden">
+                One of the most important steps in moving from school or developing skills to the working world is
+                applying for jobs. Customizing your resume, writing strong cover letters, and applying strategically to
+                positions that fit your talents and career goals are all part of this step. To stand out from the
+                competition, you must do extensive research on businesses, comprehend job descriptions, and use
+                networks.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b11">
+            <p class="showbtn hidden">Lack of Focus</p>
+            <p class="showbtn2 hidden">During your professional journey, losing focus might result in time wastage and
+                missed chances. Delays in reaching milestones are frequently caused by distractions and unclear
+                objectives. Retaining focus is crucial for remaining on course since it guarantees steady progress
+                toward your goals. Discipline, efficient time management, and a clear career path vision are necessary
+                to overcome this obstacle. Despite distractions, those who are tenacious and committed will succeed.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b01">
+            <p class="showbtn hidden">
+                Start
+            </p>
+            <p class="showbtn2 hidden">Every journey starts with a single step, and establishing specific objectives and
+                determining your desired course are the first steps in beginning your career. It entails considering
+                your hobbies, looking into potential job paths, and making a commitment to both professional and
+                personal development. Because it establishes the tone for all subsequent activities, this foundational
+                step is crucial. Navigating the competitive environment becomes considerably more difficult without a
+                clear starting point. Making this initial move creates a feeling of direction and increases the drive
+                needed to keep going on the journey.
+
+
+            </p>
+            <p id="p1"></p>
+
+
+        </div>
+        <div class="box" id="b02">
+            <p class="showbtn hidden">
+                Attending Seminars
+            </p>
+            <p class="showbtn2 hidden">Attending seminars is a great way to remain current on market trends, new
+                developments in technology, and professional viewpoints. They let students engage with professionals
+                while exposing them to fresh concepts and advancements. Attending seminars helps you focus better and
+                learn about the technologies and talents that are in demand right now. These occasions can also pique
+                your interest in particular subjects and motivate you to seek out more specialized information. Being in
+                these kinds of settings fosters curiosity and a proactive approach toward learning, two qualities that
+                are critical for professional success.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b03">
+            <p class="showbtn hidden">
+                Participating in Workshops
+            </p>
+            <p class="showbtn2 hidden">Workshops provide a distinctive, experiential learning environment where academic
+                understanding is combined with real-world application. Workshops, as opposed to lectures, encourage
+                active participation, which aids in students' comprehension of difficult ideas and the development of
+                their problem-solving abilities. Workshops assist improve technical skills and confidence in addressing
+                real-world problems, whether it's coding, UI/UX design, or project management. The abilities you gain
+                from workshops frequently help you stand out in projects or interviews by showcasing your capacity for
+                learning, adapting, and successfully applying knowledge.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b04">
+            <p class="showbtn hidden">Engaging in Internships</p>
+            <p class="showbtn2 hidden">Through an internship, one can gain firsthand experience in the workplace and
+                gain insight into how other businesses operate. They guarantee that you are prepared for the workforce
+                by bridging the gap between professional requirements and academic learning. Under expert guidance,
+                interns frequently work on actual projects that improve their technical and social abilities. Employers
+                favor candidates with prior experience, so doing internships enhances your resume's appeal. By exposing
+                you to particular tasks and responsibilities, internships help you define your career goals in addition
+                to your talents.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b05">
+            <p class="showbtn hidden">Networking at Events</p>
+            <p class="showbtn2 hidden">One of the most important aspects of a successful career is making professional
+                connections at networking events. Through networking with peers, alumni, and industry professionals,
+                these events give students the chance to find mentors, internships, and potentially job offers.
+                Establishing your presence in the professional community, exchanging ideas, and learning about careers
+                are all made easier with networking. A robust network can help you make decisions about your career and
+                offer suggestions when required. Relationships frequently open doors in today's linked society that
+                academic success alone cannot.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b06">
+            <p class="showbtn hidden">Industrial Visit</p>
+            <p class="showbtn2 hidden">Students have the opportunity to see how companies function and comprehend how
+                their studies are applied in the real world through industrial trips. Students are able to make the
+                connection between theory and practice through these trips, which offer insights into the technologies,
+                tools, and procedures utilized in professional settings. Seeing professionals in the field at work can
+                be encouraging and motivational since it shows you what is possible in your chosen sector. You can
+                better prepare for your future profession by learning about workplace cultures and expectations through
+                industrial visits.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b07">
+            <p class="showbtn hidden">Campus Placement</p>
+            <p class="showbtn2 hidden">Because businesses visit campuses to find skilled applicants, campus placements
+                offer a simple entrance point into the working world. Developing technical, communication, and interview
+                skills is frequently part of being ready for these placements. Getting a job through campus placement
+                gives a controlled transition from academia to industry and lessens the stress of job hunting. Since it
+                signifies the start of their career and financial freedom, this stage is important for many students.
+
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b08">
+            <p class="showbtn hidden">Gaining Soft Skills</p>
+            <p class="showbtn2 hidden">Soft skills like leadership, teamwork, and communication are essential for
+                success in every line of employment. Soft abilities guarantee that you flourish in a collaborative
+                setting, while technical knowledge opens doors. They support the development of solid bonds with
+                coworkers, the settlement of disputes, and the clear exchange of ideas. Candidates that are not just
+                skilled but also flexible, sympathetic, and able to collaborate with others are highly valued by
+                employers. Gaining soft skills makes you stand out as a professional and creates the foundation for
+                future career growth.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b09">
+            <p class="showbtn hidden">Learning Industry Tools</p>
+            <p class="showbtn2 hidden">
+                Modern workers must be familiar with industry-standard tools like Jira, Trello, or Git. These tools
+                increase team member collaboration, expedite processes, and boost productivity. Early proficiency with
+                these technologies guarantees a seamless transition into professional employment because you won't
+                require a lot of training to adjust. Furthermore, using these techniques well in an interview shows that
+                you are prepared for problems in the workplace. A crucial first step in coordinating academic learning
+                with professional objectives is mastery of industrial technologies.
+
+
+            </p>
+        </div>
+
+        <div class="box" id="b10">
+            <p class="showbtn hidden">Collaborating on Projects</p>
+            <p class="showbtn2 hidden">Working on collaborative projects gives you the chance to use your knowledge in
+                practical situations while collaborating with others. They impart important abilities that are necessary
+                for professional advancement, such as communication, teamwork, and project management. Completing tasks
+                successfully shows that you can think critically, participate effectively, and produce outcomes. These
+                experiences frequently serve as conversation starters during interviews, demonstrating your
+                problem-solving and practical capabilities. As your career develops, working on collaborative projects
+                also gives you the confidence to take on more difficult tasks.
+            </p>
+        </div>
+
+
+    </div>
+
+    <img class="" src="img/Snake & Ladder.svg" alt="">
+
+
+    <!-- Popup Form -->
+    <!-- <div class="form-container" id="popupForm">
+        <form id="form" action="">
+            <h2>Login Form</h2>
+            <input type="text" name="Name" class="txt" placeholder="Enter your name" required /><br><br>
+            <input type="email" name="Email" class="txt" placeholder="Enter your email" required /><br><br>
+            <button type="submit" class="submit" value="Submit">Submit</button>
+        </form>
+    </div> -->
+
+
+ 
+    
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script> -->
+</body>
+
+</html>
